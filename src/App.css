@@ -105,6 +105,11 @@ body {
   /* Add a shadow */
 }
 
+.karcher{
+  margin: 25px;
+  position: absolute;
+}
+
 
 /* Keyframes for vanishing the spans */
 @keyframes vanishSpan {
