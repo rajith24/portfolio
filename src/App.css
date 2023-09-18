@@ -49,7 +49,7 @@ body {
   animation: vanishSpan 6s linear forwards;
   transform-origin: center bottom;
   /* Set the transform origin to the bottom center */
-  animation-delay: 16s;
+  animation-delay: 16.5s;
 }
 
 

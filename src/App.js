@@ -24,7 +24,7 @@ function App() {
     }
 
     // Start the animation after a 5-second delay
-    setTimeout(animateSpansReverse, 15000);
+    setTimeout(animateSpansReverse, 16500);
   }, [])
 
   return (
