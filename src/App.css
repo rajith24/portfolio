@@ -49,7 +49,7 @@ body {
   animation: vanishSpan 6s linear forwards;
   transform-origin: center bottom;
   /* Set the transform origin to the bottom center */
-  animation-delay: 16.5s;
+  animation-delay: 15s;
 }
 
 
@@ -82,16 +82,18 @@ body {
 
 
 .roomba {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
   align-content: center;
   position: relative;
   width: 100vw;
   height: 100vh;
   justify-content: flex-end;
-  animation: driveRoomba 25s linear forwards;
+  animation: driveRoomba 18s linear forwards;
   animation-delay: 5s;
   visibility: hidden;
+  justify-items: center;
+  /* justify-content: space-between; */
 }
 
 .roombaImage {
@@ -102,12 +104,90 @@ body {
   object-fit: cover;
   /* Maintain aspect ratio and crop as needed */
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-  /* Add a shadow */
+  border: none;
+  border-radius: none;
+  padding: none;
+  /* box-shadow: none; */
 }
 
 .karcher{
   margin: 25px;
   position: absolute;
+}
+
+.textOverlay{
+  /* visibility: hidden; */
+  opacity: 0;
+  animation: roombaText 25s linear forwards;
+  animation-delay: 5s;
+  font-size: 36px;
+  font-weight: bold;
+  background-image: linear-gradient(to right, #d4ea09, #f5f3f2); /* Define your gradient colors */
+  -webkit-background-clip: text; /* Clip the background to the text */
+  background-clip: text;
+  color: transparent;
+}
+
+.batteryContainer {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  top: -140px;
+  right: -90px;
+  opacity: 0;
+  animation: roombaText 25s linear forwards;
+  animation-delay: 5s;
+}
+
+.batteryOuter {
+  border-radius: 3px;
+  border: 1px solid #444;
+  padding: 1px;
+  width: 25px;
+  height: 9px;
+}
+
+.batteryBump {
+  border-radius: 2px;
+  background-color: #444;
+  margin: 2px;
+  width: 1px;
+  height: 3px;
+}
+
+#batteryLevel {
+  border-radius: 2px;
+  background-color: #73AD21;
+  width: 18px;
+  height: 9px;
+}
+
+.batteryPercentage{
+ /* visibility: hidden; */
+ opacity: 0;
+ font-size: 15px;
+ margin-right: 5px;
+ animation: roombaText 25s linear forwards;
+ animation-delay: 5s;
+ font-weight: bold;
+ background-image: linear-gradient(to right, #d4ea09, #f5f3f2); /* Define your gradient colors */
+ -webkit-background-clip: text; /* Clip the background to the text */
+ background-clip: text;
+ color: transparent;
+}
+
+@keyframes roombaText {
+  0%, 99% {
+    opacity: 0; /* Hidden before and after 100% keyframe */
+  }
+  100% {
+    opacity: 1; /* Visible at 100% keyframe */
+  }
 }
 
 
@@ -122,6 +202,10 @@ body {
 @keyframes driveRoombaImage {
   0% {
     transform: rotate(435deg);
+    border: none;
+    border-radius: none;
+    padding: none;
+    box-shadow: none;
   }
 
   5% {
@@ -165,27 +249,39 @@ body {
   }
 
   75% {
-    transform: rotate(325deg);
+    transform: rotate(360deg);
   }
 
   80% {
-    transform: rotate(305deg);
+    transform: rotate(385deg);
   }
 
   85% {
-    transform: rotate(295deg);
+    transform: rotate(400deg);
   }
 
   90% {
-    transform: rotate(285deg);
+    transform: rotate(415deg);
   }
 
   95% {
-    transform: rotate(275deg);
+    transform: rotate(430deg);
+  }
+
+  99% {
+    transform: rotate(450deg);
+    border: none;
+    border-radius: none;
+    padding: none;
+    box-shadow: none;
   }
 
   100% {
-    transform: rotate(275deg);
+    transform: rotate(450deg);
+    border: 0.2em solid #ffffff;
+    border-radius: 2rem;
+    padding: 2em 13em 2em 13em;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #03bcf4, 0 0 0.8rem #03bcf4, 0 0 2.8rem #03bcf4, inset 0 0 1.3rem #03bcf4;
   }
 }
 
@@ -233,30 +329,31 @@ body {
   }
 
   65% {
-    top: calc(5%);
+    top: calc(0%);
   }
 
   70% {
-    top: calc(0% + 10%);
+    top: calc(0%);
   }
 
   85% {
-    top: calc(0% + 20%);
+    top: calc(0%);
   }
 
   90% {
-    top: calc(30%);
+    top: calc(0%);
   }
 
   95% {
-    top: calc(40%);
+    top: calc(0%);
   }
 
   100% {
-    right: calc(100% - 0px);
-    top: calc(55%);
-    visibility: hidden;
-  }
+    right: calc(80% - 0px);
+    top: calc(0%);
+    visibility: visible;
+    padding: 2em 13em 2em 13em;
+   }
 }
 
 @keyframes expandDividerPolygonLeft {
@@ -345,5 +442,31 @@ body {
       0 0 40px #03bcf4,
       0 0 80px #03bcf4,
       0 0 160px #03bcf4;
+  }
+}
+
+
+
+@media (max-width: 1300px) {
+  /* Adjust the div's size for screens with a maximum width of 768px */
+  .responsive-div {
+    margin-left: 20%; /* Adjust the height as needed */
+    scale : 0.8;
+  }
+  .welcome span {
+    display: inline-block;
+    opacity: 1;
+    animation: vanishSpan 8s linear forwards;
+    transform-origin: center bottom;
+    /* Set the transform origin to the bottom center */
+    animation-delay: 17s;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Adjust the div's size for screens with a maximum width of 480px */
+  .responsive-div {
+      width: 60%; /* Adjust the width as needed */
+      height: 100px; /* Adjust the height as needed */
   }
 }

@@ -10,21 +10,32 @@ function App() {
   useEffect(() => {
     const spans = document.querySelectorAll('.welcome span');
     // console.log(spans)
-    function animateSpansReverse() {
+    let delayAttr = 0
+    function animateSpansReverse(delayAttr) {
       let delay = 0;
       for (let i = spans.length - 1; i >= 0; i--) {
         const span = spans[i];
         setTimeout(() => {
           span.style.animationDelay = '0s';
-          span.style.animationDuration = '0.5s';
+          span.style.animationDuration = '1s';
           span.style.animationPlayState = 'running';
         }, delay);
-        delay += 500;
+        delay = delay + delayAttr;
       }
     }
 
-    // Start the animation after a 5-second delay
-    setTimeout(animateSpansReverse, 16500);
+    var windowWidth = window.innerWidth;
+
+    if (windowWidth < 1300) {
+      // Start the animation after a 5-second delay
+      delayAttr = 1000
+      setTimeout(() => animateSpansReverse(delayAttr), 17000);
+    }
+    else{
+      delayAttr = 500
+      setTimeout(() => animateSpansReverse(delayAttr), 15000);
+    }
+
   }, [])
 
   return (
@@ -44,8 +55,18 @@ function App() {
           <span>E</span>
         </h2>
       </div>
-      <div className="roomba">
+      <div className="roomba responsive-div">
+        {/* <div> */}
+          <div class="batteryContainer">
+            <div className="batteryPercentage">80% </div>
+            <div class="batteryOuter"><div id="batteryLevel"> </div></div>
+            <div class="batteryBump"></div>
+
+          </div>
           <img className="roombaImage" src={myImage} alt="Roomba" />
+          <div className="textOverlay">RCV3</div>
+        {/* </div> */}
+
       </div>
     </div>
   );
