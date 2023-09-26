@@ -1,0 +1,344 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.App {
+  /* background-color: black */
+  /* background-color: #8BC6EC;
+  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%); */
+  background-color: #0e3742;
+  width: 100vw;
+  height: 100vh;
+}
+
+.diagonal-container {
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.welcome {
+  position: relative;
+  font-size: 6em;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  color: #0e3742;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #000008);
+  line-height: 0.70em;
+  outline: none;
+  animation: welcomeAnimate 3s linear forwards;
+  animation: welcomeAnimateText 3s linear forwards;
+  animation-delay: 2s;
+  visibility: hidden;
+  align-self: center;
+}
+
+/* Define animation for each span */
+.welcome span {
+  display: inline-block;
+  opacity: 1;
+  animation: vanishSpan 6s linear forwards;
+  transform-origin: center bottom;
+  /* Set the transform origin to the bottom center */
+  animation-delay: 16s;
+}
+
+
+.left-half {
+  left: 0;
+  background-color: #000000;
+  /* background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);   */
+  /* clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 50% calc(100% - 50vw)); */
+  width: 100vw;
+  display: block;
+  position: absolute;
+  height: 100vh;
+  animation: expandDividerPolygonLeft 2s ease-in-out 0s both;
+
+}
+
+.right-half {
+  right: 0;
+  background-color: #000000;
+  /* background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);   */
+  /* clip-path: polygon(100% 0%, 100% 100%, 0% 0%, 0% calc(0% - 50vw)); */
+  width: 100vw;
+  display: block;
+  position: absolute;
+  height: 100vh;
+  animation: expandDividerPolygonRight 2s ease-in-out 0s both;
+}
+
+
+.roomba {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  justify-content: flex-end;
+  animation: driveRoomba 25s linear forwards;
+  animation-delay: 5s;
+  visibility: hidden;
+}
+
+.roombaImage {
+  animation: driveRoombaImage 25s linear forwards;
+  animation-delay: 5s;
+  border-radius: 50%;
+  /* Make it a circle */
+  object-fit: cover;
+  /* Maintain aspect ratio and crop as needed */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  /* Add a shadow */
+}
+
+
+/* Keyframes for vanishing the spans */
+@keyframes vanishSpan {
+  to {
+    /* opacity: 0; */
+    transform: scaleZ(0);
+  }
+}
+
+@keyframes driveRoombaImage {
+  0% {
+    transform: rotate(435deg);
+  }
+
+  5% {
+    transform: rotate(425deg);
+  }
+
+  10% {
+    transform: rotate(415deg);
+  }
+
+  15% {
+    transform: rotate(405deg);
+  }
+
+  20% {
+    transform: rotate(395deg);
+  }
+
+  25% {
+    transform: rotate(385deg);
+  }
+
+  30% {
+    transform: rotate(375deg);
+  }
+
+  35% {
+    transform: rotate(365deg);
+  }
+
+  45% {
+    transform: rotate(355deg);
+  }
+
+  55% {
+    transform: rotate(360deg);
+  }
+
+  70% {
+    transform: rotate(340deg);
+  }
+
+  75% {
+    transform: rotate(325deg);
+  }
+
+  80% {
+    transform: rotate(305deg);
+  }
+
+  85% {
+    transform: rotate(295deg);
+  }
+
+  90% {
+    transform: rotate(285deg);
+  }
+
+  95% {
+    transform: rotate(275deg);
+  }
+
+  100% {
+    transform: rotate(275deg);
+  }
+}
+
+@keyframes driveRoomba {
+  0% {
+    right: calc(0% - 300px);
+    top: calc(0% + 50%);
+    visibility: visible;
+  }
+
+  5% {
+    top: calc(0% + 40%);
+  }
+
+  10% {
+    top: calc(0% + 35%);
+  }
+
+  15% {
+    top: calc(0% + 25%);
+  }
+
+  20% {
+    top: calc(0% + 20%);
+  }
+
+  25% {
+    top: calc(0% + 15%);
+  }
+
+  30% {
+    top: calc(0% + 10%);
+  }
+
+  35% {
+    top: calc(5%);
+  }
+
+  45% {
+    top: calc(0%);
+  }
+
+  55% {
+    top: calc(0%);
+  }
+
+  65% {
+    top: calc(5%);
+  }
+
+  70% {
+    top: calc(0% + 10%);
+  }
+
+  85% {
+    top: calc(0% + 20%);
+  }
+
+  90% {
+    top: calc(30%);
+  }
+
+  95% {
+    top: calc(40%);
+  }
+
+  100% {
+    right: calc(100% - 0px);
+    top: calc(55%);
+    visibility: hidden;
+  }
+}
+
+@keyframes expandDividerPolygonLeft {
+  0% {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 0% 0%);
+  }
+
+  100% {
+    /* clip-path: polygon(0% 0%, 0% 0%, 100% 100%, 0% 0%); */
+    clip-path: polygon(0% 0%, 0% 0%, 100% 100%, 0% 0%);
+
+  }
+}
+
+
+@keyframes expandDividerPolygonRight {
+  0% {
+    clip-path: polygon(100% 0%, 100% 100%, 0% 0%, 100% 0%);
+  }
+
+  100% {
+    /* clip-path: polygon(0% 0%, 0% 0%, 100% 100%, 0% 0%); */
+    clip-path: polygon(100% 100%, 100% 100%, 0% 0%, 100% 100%);
+  }
+}
+
+
+@keyframes welcomeAnimateText {
+  0% {
+    /* transform: scale3d(1, 1, 1); */
+    letter-spacing: 0px;
+    color: #0e3742;
+    text-shadow: none;
+    visibility: visible;
+  }
+
+  100% {
+    /* transform: scale3d(1.5, 1.5, 1.5); */
+    letter-spacing: 5px;
+    visibility: visible;
+    color: #fff;
+    text-shadow: 0 0 10px #03bcf4,
+      0 0 20px #03bcf4,
+      0 0 40px #03bcf4,
+      0 0 80px #03bcf4,
+      0 0 160px #03bcf4;
+
+  }
+}
+
+@keyframes welcomeAnimate {
+
+  0%,
+  5%,
+  10%,
+  18%,
+  20%,
+  50.1%,
+  60%,
+  65%,
+  80%,
+  90%,
+  92% {
+    color: #0e3742;
+    text-shadow: none;
+    visibility: visible;
+
+
+  }
+
+  5.1%,
+  10.1%,
+  18.1%,
+  20.1%,
+  50%,
+  60.1%,
+  65.1%,
+  80.1%,
+  90.1%,
+  92.1%,
+  100% {
+    visibility: visible;
+    color: #fff;
+    text-shadow: 0 0 10px #03bcf4,
+      0 0 20px #03bcf4,
+      0 0 40px #03bcf4,
+      0 0 80px #03bcf4,
+      0 0 160px #03bcf4;
+  }
+}
