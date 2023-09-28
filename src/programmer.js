@@ -87,7 +87,7 @@ const ProgrammerModel = () => {
   return (
     <React.Fragment>
 
-      <div className="sceneComponent" style={{width: '60%', height:"100%", display: 'flex !important'}}>
+      <div className="sceneComponent" style={{width: '100%', height:"100%", display: 'flex !important',position:"absolute"}}>
       <Canvas camera={{ position: [8, 0, 0], rotation: [0, 0, 0], fov: 20 }} gl={{ alpha: true }}>
         <ambientLight intensity={0.5} />
         <spotLight intensity={0.8} position={[10, 15, 10]} angle={0.2} />

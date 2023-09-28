@@ -418,3 +418,115 @@ body {
   }
 }
 
+
+
+
+/* copy new */
+
+
+/* Media query for small screens (e.g., smartphones) */
+@media (max-width: 576px) {
+  .main-container{
+    scale: .3;
+    font-size: 1.8em;
+    z-index: 1;
+    top: -10%;
+    right: -70%;
+  }
+  .sceneComponent{
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+
+/* Media query for screens between 577px and 768px (e.g., small tablets) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .main-container{
+    scale: .4;
+    font-size: 1em;
+    top: -45%;
+    right: -20%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 100% !important;
+    height: 100% !important;
+  }
+  p{
+    font-size: 1.5em;
+  }
+}
+
+/* Media query for screens between 769px and 992px (e.g., larger tablets and small laptops) */
+@media (min-width: 769px) and (max-width: 992px) {
+  .main-container{
+    scale: .4;
+    font-size: 1em;
+    top: -40%;
+    right: -20%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 80% !important;
+    height: 100% !important;
+  }
+  p{
+    font-size: 1.5em;
+  }
+}
+
+/* Media query for screens between 993px and 1200px (e.g., medium-sized laptops and desktops) */
+@media (min-width: 993px) and (max-width: 1600px) {
+  .main-container{
+    scale: 0.6;
+    font-size: 1em;
+    top: -15%;
+    right: -8%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 60% !important;
+    height: 100% !important;
+  }
+  p{
+    font-size: 1.5em;
+  }
+}
+
+/* Media query for screens larger than 1200px (e.g., large desktops and beyond) */
+@media (min-width: 1600px) {
+  .main-container{
+    scale: .6;
+    font-size: 1em;
+    top: -16%;
+    right: 0%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 60% !important;
+    height: 100% !important;
+  }
+  p{
+    font-size: 1.5em;
+  }
+}
+
+
+/* Media query for screens larger than 1200px (e.g., large desktops and beyond) */
+@media (min-width: 2000px) {
+  .main-container{
+    scale: 1;
+    font-size: 1em;
+    top: 6%;
+    right: 15%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 60% !important;
+    height: 100% !important;
+  }
+  p{
+    font-size: 1.5em;
+  }
+}

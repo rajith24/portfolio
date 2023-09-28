@@ -25,6 +25,14 @@ body {
   background-color: #121212;
   width: 100vw;
   height: 100vh;
+
+  /* new */
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-right: 10%;
 }
 
 .diagonal-container {
@@ -508,15 +516,16 @@ opacity: 1;
 /* Media query for small screens (e.g., smartphones) */
 @media (max-width: 576px) {
   .main-container{
-    scale: .4;
-    font-size: 1em;
-    z-index: 1;
-    top: 0%;
-    right: -15%;
+    scale: .5;
+
   }
   .sceneComponent{
     width: 100% !important;
     height: 100% !important;
+  }
+  .App{
+    justify-content: center;
+    padding: 0px;
   }
 }
 
@@ -524,30 +533,37 @@ opacity: 1;
 /* Media query for screens between 577px and 768px (e.g., small tablets) */
 @media (min-width: 577px) and (max-width: 768px) {
   .main-container{
-    scale: .4;
-    font-size: 1em;
-    top: -35%;
-    right: 0%;
-    z-index: 1;
+    scale: .6;
+
   }
   .sceneComponent{
     width: 100% !important;
     height: 100% !important;
+  }
+  p{
+    font-size: 1.5em;
+  }
+  .App{
+    justify-content: flex-end;
+    padding-right: 0 !important;
   }
 }
 
 /* Media query for screens between 769px and 992px (e.g., larger tablets and small laptops) */
 @media (min-width: 769px) and (max-width: 992px) {
   .main-container{
-    scale: .4;
-    font-size: 1em;
-    top: -30%;
-    right: 0%;
-    z-index: 1;
+    scale: .6;
   }
   .sceneComponent{
-    width: 80% !important;
+    width: 100% !important;
     height: 100% !important;
+  }
+  p{
+    font-size: 1.5em;
+  }
+  .App{
+    justify-content: flex-end;
+    padding-right: 0px !important;
   }
 }
 
@@ -555,29 +571,37 @@ opacity: 1;
 @media (min-width: 993px) and (max-width: 1600px) {
   .main-container{
     scale: .5;
-    font-size: 1em;
-    top: -25%;
-    right: 10%;
-    z-index: 1;
+    width: 75%;
   }
   .sceneComponent{
     width: 60% !important;
     height: 100% !important;
+  }
+  p{
+    font-size: 1.5em;
+  }
+  .App{
+    justify-content: flex-end;
+    padding-right: 0px !important;
   }
 }
 
 /* Media query for screens larger than 1200px (e.g., large desktops and beyond) */
 @media (min-width: 1600px) {
   .main-container{
-    scale: .8;
-    font-size: 1em;
-    top: 0%;
-    right: 11%;
-    z-index: 1;
+    scale: .7;
+    width: 60%;
   }
   .sceneComponent{
     width: 60% !important;
     height: 100% !important;
+  }
+  p{
+    font-size: 1.5em;
+  }
+  .App{
+    justify-content: flex-end;
+    padding-right: 0% !important;
   }
 }
 
@@ -585,16 +609,14 @@ opacity: 1;
 /* Media query for screens larger than 1200px (e.g., large desktops and beyond) */
 @media (min-width: 2000px) {
   .main-container{
-    scale: 1;
-    font-size: 1em;
-    top: 6%;
-    right: 15%;
-    z-index: 1;
+    scale: .8;
+    width: 50%;
   }
   .sceneComponent{
     width: 60% !important;
     height: 100% !important;
   }
+  p{
+    font-size: 1.5em;
+  }
 }
-
-

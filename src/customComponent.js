@@ -65,7 +65,9 @@ function DesignDiv() {
     
 
     return (
-        <div className='main-container' style={{
+        <React.Fragment>
+        {/* <div className="col-sm-2 col-md-3 col-lg-6"></div> */}
+        <div className='main-container col-xs-12 col-sm-12 col-md-9 col-lg-6' style={{
             position: 'absolute',
             zIndex: 1,
         }}>
@@ -213,6 +215,7 @@ function DesignDiv() {
 
             </footer>
         </div>
+        </React.Fragment>
     );
 }
 
