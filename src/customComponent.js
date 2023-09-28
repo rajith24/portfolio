@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 // import './DesignDiv.css'; // Import your CSS file for styling
+import Resume from './Resume.pdf';
 
 function DesignDiv() {
 
@@ -7,6 +8,10 @@ function DesignDiv() {
     const [isHoveredEmail, setIsHoveredEmail] = useState(false);
     const [isHoveredLinkedIn, setIsHoveredLinkedIn] = useState(false);
 
+    const [containerDimensions, setContainerDimensions] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    });
 
     const handleHover = () => {
         setIsHovered(!isHovered);
@@ -23,20 +28,61 @@ function DesignDiv() {
         path.classList.add('animate-path');
     }, []);
 
+    // Update dimensions on window resize
+    useEffect(() => {
+        const updateDimensions = () => {
+            setContainerDimensions({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+
+        window.addEventListener('resize', updateDimensions);
+
+        // Remove the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('resize', updateDimensions);
+        };
+    }, []);
+
+    const handleDownload = () => {
+        // Specify the file path or URL of your resume
+        const resumeFilePath = Resume;
+    
+        // Create an anchor element
+        const anchor = document.createElement('a');
+        anchor.href = resumeFilePath;
+        anchor.download = 'Resume_Rajith.pdf'; // The desired filename for download
+        anchor.style.display = 'none';
+    
+        // Append the anchor to the document and trigger the click event
+        document.body.appendChild(anchor);
+        anchor.click();
+    
+        // Clean up by removing the anchor element
+        document.body.removeChild(anchor);
+      };
+    
+
     return (
-        <div className='main-container' style={{ position: 'absolute'}}>
+        <div className='main-container' style={{
+            position: 'absolute',
+            zIndex: 1,
+        }}>
             <header style={{ justifyContent: "space-between", display: "flex" }}>
-                <svg width="300" height="300" data-name="corner-top-left" xmlns="http://www.w3.org/2000/svg" style={{ pointerEvents: "none" }} data-inlinesvg=".inlineSvgFile-6">
+                <svg width="200" height="200" data-name="corner-top-left" xmlns="http://www.w3.org/2000/svg" style={{ pointerEvents: "none" }} data-inlinesvg=".inlineSvgFile-6">
                     <defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0" stopColor="rgb(192,86,123)" className="gradient1"></stop>
                         <stop offset=".5" stopColor="rgb(178,134,86)" className="gradient2"></stop>
                         <stop offset="1" stopColor="rgb(192,86,123)" className="gradient1"></stop>
                     </linearGradient>
                     </defs>
-                    <path fill="url('#grad1')" d="M8 0h292l-20 20H25a5 5 0 0 0-5 5v255L0 300V8a8 8 0 0 1 8-8Z">
+                    {/* <path fill="url('#grad1')" d="M8 0h292l-20 20H25a5 5 0 0 0-5 5v255L0 300V8a8 8 0 0 1 8-8Z">
+                    </path> */}
+                    <path fill="url('#grad1')" d="M8 0h192l-20 20H25a5 5 0 0 0-5 5v155L0 200V8a8 8 0 0 1 8-8Z">
                     </path>
                 </svg>
-                <div style={{ justifyContent: "space-between", display: "flex", height: "min-content" }}>
+                <div style={{ justifyContent: "space-between", display: "flex", height: "min-content", margin: "10px" }}>
                     <ul>
                         <li className="email" onMouseEnter={handleHoverEmail}
                             onMouseLeave={handleHoverEmail}>
@@ -44,7 +90,7 @@ function DesignDiv() {
                                 aria-label="Email"
                                 href="mailto:rajithrahul24@gmail.com?subject=Mail from rajithPortfolio"
                             >
-                                <svg style={{transform: "scale(1.1)"}} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 64 64" className={`email-icon ${isHoveredEmail ? 'hovered' : ''}`}>
+                                <svg style={{ transform: "scale(1.1)" }} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 64 64" className={`email-icon ${isHoveredEmail ? 'hovered' : ''}`}>
                                     <path d="M47 34.837V52h7.533C56.448 52 58 50.448 58 48.533V29.486L47 34.837zM47 32l11-7.333v-5.426c0-1.914-.812-3.781-2.325-4.953-2.336-1.809-5.515-1.673-7.665.151L47 15.232V32zM19.814 33.822L32 41 44.349 33.726 43.443 18.023 32 27 20.718 18.149zM17.153 32.102v-16.75L15.99 14.44c-2.15-1.823-5.329-1.961-7.664-.151C6.812 15.46 6 17.328 6 19.243v5.424L17.153 32.102zM6 29.486v19.047C6 50.448 7.552 52 9.467 52H17V34.837L6 29.486z"></path>
                                 </svg>
 
@@ -69,7 +115,7 @@ function DesignDiv() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <svg style={{transform: "scale(1.2)"}} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 64 64" className={`svg-icon ${isHovered ? 'hovered' : ''}`} >
+                                <svg style={{ transform: "scale(1.2)" }} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 64 64" className={`svg-icon ${isHovered ? 'hovered' : ''}`} >
                                     <path d="M32,10c12.15,0,22,9.85,22,22c0,9.768-6.369,18.045-15.179,20.916c0.002-0.008,0.006-0.021,0.006-0.021	s-1.485-0.696-1.453-1.938c0.035-1.367,0-4.556,0-5.727c0-2.01-1.272-3.434-1.272-3.434s9.977,0.112,9.977-10.533	c0-4.107-2.147-6.245-2.147-6.245s1.128-4.385-0.39-6.245c-1.701-0.184-4.749,1.626-6.05,2.472c0,0-2.062-0.846-5.492-0.846	c-3.43,0-5.492,0.846-5.492,0.846c-1.301-0.846-4.348-2.656-6.05-2.472c-1.518,1.86-0.39,6.245-0.39,6.245s-2.147,2.137-2.147,6.245	c0,10.645,9.977,10.533,9.977,10.533s-1.005,1.136-1.225,2.806c-0.696,0.236-1.721,0.528-2.549,0.528	c-2.165,0-3.812-2.105-4.416-3.078c-0.595-0.96-1.815-1.766-2.953-1.766c-0.749,0-1.115,0.375-1.115,0.803s1.05,0.727,1.743,1.521	c1.461,1.674,1.435,5.438,6.641,5.438c0.565,0,1.719-0.139,2.588-0.256c-0.005,1.185-0.007,2.436,0.012,3.167	c0.031,1.242-1.453,1.938-1.453,1.938s0.004,0.012,0.006,0.021C16.369,50.045,10,41.768,10,32C10,19.85,19.85,10,32,10z"></path>
                                 </svg>
 
@@ -88,7 +134,7 @@ function DesignDiv() {
                                 rel="noopener noreferrer"
                                 data-inlinesvg=".inlineSvgFile-5"
                             >
-                                <svg style={{transform: "scale(.9)"}} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48" className={`linkedin-icon ${isHoveredLinkedIn ? 'hovered' : ''}`}>
+                                <svg style={{ transform: "scale(.9)" }} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48" className={`linkedin-icon ${isHoveredLinkedIn ? 'hovered' : ''}`}>
                                     <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"></path>
                                 </svg>
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48" className={`linkedin-icon ${isHoveredLinkedIn ? '' : 'hovered'}`}>
@@ -126,10 +172,18 @@ function DesignDiv() {
                                  24.18-6.45 35-.18 39.89 18.04 74.6 58 86.98 5.76 1.78 15.05 3.95 21 4.02 18.01.21 32.87-1.63 49-10.51 49.02-27.01 55.84-102.96 18.71-142.4-18.76-19.93-46.02-27.44-72.71-24.79Zm799 165.55c4.74-1.3 9.69-1.39 13.67 1.95 7.18 
                                  6.01 5.14 18.08-3.67 21.46-14.63 5.61-25.63-14.82-10-23.41Z"></path>
                         </svg> </div>
-                        <span style={{ color: 'antiquewhite' }}> <p>My name is Rajith, I'm a Frontend Developer based in Stuttgart, Germany. </p>
-                            <p>I have developed several UI/UX components that helps to connect and visualize the azure cloud services.</p>
-                            <p>I'm passionate about cutting-edge, pixel-perfect, beautiful interfaces and intuitively implemented UX/UI. </p>
-                            <p>Explore my projects to know more about me. </p>
+                        <div className="nameAnimate" style={{ marginLeft: "30px" }}>
+                            <h1>Hi, I'm Rajith</h1>
+                        </div>
+                        <div className="nameTextAnimate" style={{ marginLeft: "30px" }}>
+                            <h3>Frontend Developer</h3>
+                        </div>
+                        <span style={{ color: 'antiquewhite' }}>
+
+                            <p>Accomplished web developer with a strong track record of creating web applications compliant with DIN ISO standards.</p>
+                            <p>Proficient in designing and implementing UI/UX components that enhance connectivity and visualization of Azure cloud services.</p>
+                            <p>Passionate about crafting cutting-edge, pixel-perfect interfaces and delivering intuitive UX/UI experiences. </p>
+                            <p>Explore my Resume to discover more about my skills and accomplishments.</p>
 
                         </span> </div>
 
@@ -138,9 +192,26 @@ function DesignDiv() {
 
 
             </div>
+            <footer>
+                <div className='btn-box' onClick={handleDownload}>
+                    <a className='btn'> Download CV</a>
+                </div>
 
-            <svg width="300" height="300" data-name="corner-bottom-right" xmlns="http://www.w3.org/2000/svg" style={{ pointerEvents: "none", float: "right" }} data-inlinesvg=".inlineSvgFile-4">
-                <path fill="url('#grad1')" d="M292 300H0l20-20h255a5 5 0 0 0 5-5V20l20-20v292a8 8 0 0 1-8 8Z"></path></svg>
+                {/* <svg width="300" height="300" data-name="corner-bottom-right" xmlns="http://www.w3.org/2000/svg" style={{ pointerEvents: "none", float: "right" }} data-inlinesvg=".inlineSvgFile-4">
+                <path fill="url('#grad1')" d="M292 300H0l20-20h255a5 5 0 0 0 5-5V20l20-20v292a8 8 0 0 1-8 8Z"></path></svg> */}
+
+                {/* <svg width="100" height="100" data-name="corner-bottom-right" xmlns="http://www.w3.org/2000/svg" style={{ pointerEvents: "none", float: "right" }} data-inlinesvg=".inlineSvgFile-4">
+  <path fill="url('#grad1')" d="M92 100H0l6.667-6.667H85a5 5 0 0 0 5-5V6.667L100 0v92a8 8 0 0 1-8 8Z"></path>
+</svg> */}
+
+                <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" style={{ pointerEvents: "none", float: "right" }} data-inlinesvg=".inlineSvgFile-4">
+                    <path fill="url('#grad1')" d="M192 200H0l20-20h155a5 5 0 0 0 5-5V20l20-20v192a8 8 0 0 1-8 8Z" />
+                </svg>
+
+
+
+
+            </footer>
         </div>
     );
 }

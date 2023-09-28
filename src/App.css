@@ -2,14 +2,18 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
+  /* overflow: hidden; */
+  width: 100vw;
+  height: 100vh;
+  background-color: #121212;
+
 }
 
 :root {
   --grad-1: rgb(192, 86, 123);
   --grad-2: rgb(178, 134, 86);
+  --grad-3:#03bcf4;
+  --bg-color: #121212;
 }
 
 .App {
@@ -18,7 +22,7 @@ body {
   background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%); */
   /* background-color: #0e3742; */
   /* background-color: #212529; */
-  background-color: #000;
+  background-color: #121212;
   width: 100vw;
   height: 100vh;
 }
@@ -170,8 +174,8 @@ span:before {
   opacity: 1;
   bottom: 0;
   right: 0;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   opacity: 1;
 }
 
@@ -182,7 +186,7 @@ span:before {
 
 /* Apply the animation to the path element */
 .animate-path{
-  animation: drawPath 20s infinite forwards; /* Adjust the duration and timing function as needed */
+  animation: drawPath 10s infinite forwards; /* Adjust the duration and timing function as needed */
 }
 
 ul {
@@ -197,44 +201,14 @@ ul a {
   display: flex;
 }
 
-.linkedin-icon path {
-  stroke-dasharray: 0;
-  stroke-dashoffset: 0;
-  transition: stroke-dasharray 1s, stroke-dashoffset .5s;
-}
-
-.linkedin:hover .linkedin-icon path {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-}
-
-.email-icon path {
-  stroke-dasharray: 0;
-  stroke-dashoffset: 0;
-  transition: stroke-dasharray 2s, stroke-dashoffset 0.5s;
-}
-
-.email:hover .email-icon path {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-}
-
-.github-icon path {
-  stroke-dasharray: 0;
-  stroke-dashoffset: 0;
-  transition: stroke-dasharray 5s, stroke-dashoffset 0.5s;
-}
-
-.github:hover .github-icon path {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-}
-
 /* Apply transition to smoothly animate changes */
 .svg-icon {
   opacity : 1;
   display: block;
   transition: opacity 3s ease-in-out;
+  animation: neon 20s linear infinite alternate; /* Adjust the animation duration and timing as needed */
+  stroke-dasharray: 300; /* Adjust the value to control the length of the dash */
+  stroke-dashoffset: 0;
 }
 
 /* Hide the second SVG by default */
@@ -262,6 +236,9 @@ ul a {
   opacity : 1;
   display: block;
   transition: opacity 3s ease-in-out;
+  animation: neon 20s linear infinite alternate; /* Adjust the animation duration and timing as needed */
+  stroke-dasharray: 300; /* Adjust the value to control the length of the dash */
+  stroke-dashoffset: 0;
 }
 
 /* Hide the second email by default */
@@ -288,6 +265,9 @@ ul a {
   opacity : 1;
   display: block;
   transition: opacity 3s ease-in-out;
+  animation: neon 20s linear infinite alternate; /* Adjust the animation duration and timing as needed */
+  stroke-dasharray: 300; /* Adjust the value to control the length of the dash */
+  stroke-dashoffset: 0;
 }
 
 /* Hide the second linkedin by default */
@@ -308,6 +288,116 @@ ul a {
   opacity: 0;
   display: none;
   transition: opacity 3s ease-in-out;
+}
+
+.nameTextAnimate{
+  position: relative;
+  width: 32.8em;
+}
+.nameTextAnimate h3::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  border-right: 2px solid var(--grad-3);
+  z-index: -1;
+  animation: homeCursorText 6s linear infinite;
+  animation-delay: 2s;
+}
+
+.nameTextAnimate h3{
+  font-size: 3.2em;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke:.7px var(--grad-3);
+  background-image: linear-gradient(var(--grad-3),var(--grad-3));
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-position: -33rem 0;
+  animation: homeBgText 6s linear infinite;
+  animation-delay: 2s;
+}
+
+.nameAnimate h1{
+  font-size: 3.2em;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke:.7px var(--grad-3);
+  background-image: linear-gradient(var(--grad-3),var(--grad-3));
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-position: -33rem -33rem;
+}
+
+.btn-box{
+  /* position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 34.5rem;
+  height: 5rem;
+  justify-content: center; */
+  margin-left: 45px;
+  position: absolute;
+  width: 34.5rem;
+  height: 5rem;
+  bottom: 5%;
+}
+
+.btn-box .btn{
+  position: relative;
+  display: inline-flex;
+  justify-content:center;
+  align-items: center;
+  width:15rem;
+  height: 100%;
+  background: var(--grad-3);
+  border: .2rem solid var(--grad-3);
+  border-radius: .8rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing:.1rem;
+  color: var(--grad-3);
+  z-index: 1;
+  overflow: hidden;
+  background: transparent;
+  transition: .5s;
+}
+
+.btn-box .btn::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--grad-3);
+  z-index: -1;
+  transition: .5s;
+}
+
+.btn-box .btn:hover{
+  color: var(--bg-color)
+}
+
+.btn-box .btn:hover::before{
+  width: 100%;
+}
+
+@keyframes neon {
+  0% {
+    stroke: #0099ff; /* Neon blue color */
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke: #0099ff; /* Neon blue color */
+    stroke-dashoffset: 300; /* Adjust the value to control the length of the dash */
+  }
+  100% {
+    stroke: #0077cc; /* A slightly darker shade of blue */
+    stroke-dashoffset: 0;
+  }
 }
 
 
@@ -390,14 +480,54 @@ ul a {
   }
 }
 
+@keyframes homeBgText{
+  0%,10%,100%{
+    background-position: -33rem 0;
+  }
+  65%,85%{
+    background-position: 0 0;
+  }
+}
 
-@media (max-width: 700px) {
 
+@keyframes homeCursorText{
+  0%,10%,100%{
+    width: 0;
+  }
+  65%,78%,85%{
+width: 100%;  
+opacity: 1;
+}
+75%,81%{
+  opacity: 0;
+}
+}
+
+
+
+/* Media query for small screens (e.g., smartphones) */
+@media (max-width: 576px) {
   .main-container{
     scale: .4;
-    font-size: 1.5em;
-    top: -15%;
-    right: -44%;
+    font-size: 1em;
+    z-index: 1;
+    top: 0%;
+    right: -15%;
+  }
+  .sceneComponent{
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+
+/* Media query for screens between 577px and 768px (e.g., small tablets) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .main-container{
+    scale: .4;
+    font-size: 1em;
+    top: -35%;
+    right: 0%;
     z-index: 1;
   }
   .sceneComponent{
@@ -406,31 +536,65 @@ ul a {
   }
 }
 
-@media (min-width: 700px) and (max-width: 1300px) {
+/* Media query for screens between 769px and 992px (e.g., larger tablets and small laptops) */
+@media (min-width: 769px) and (max-width: 992px) {
+  .main-container{
+    scale: .4;
+    font-size: 1em;
+    top: -30%;
+    right: 0%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 80% !important;
+    height: 100% !important;
+  }
+}
 
+/* Media query for screens between 993px and 1200px (e.g., medium-sized laptops and desktops) */
+@media (min-width: 993px) and (max-width: 1300px) {
   .main-container{
     scale: .5;
-    font-size: 1.5em;
-    top: -30%;
-    right: -10% ;
+    font-size: 1em;
+    top: -25%;
+    right: 10%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 60% !important;
+    height: 100% !important;
   }
 }
-@media (min-width: 1300px) and (max-width: 2000px) {
 
+/* Media query for screens larger than 1200px (e.g., large desktops and beyond) */
+@media (min-width: 1300px) {
   .main-container{
-    scale: 0.6;
-    font-size: 1.5em;
-    top: 6%;
-    right: -5%;
+    scale: .8;
+    font-size: 1em;
+    top: 0%;
+    right: 11%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 60% !important;
+    height: 100% !important;
   }
 }
-/* Media query for screens between 768px and 1024px (e.g., tablets) */
-@media (min-width: 2000px){
+
+
+/* Media query for screens larger than 1200px (e.g., large desktops and beyond) */
+@media (min-width: 2000px) {
   .main-container{
     scale: 1;
     font-size: 1em;
-    top: 10%;
-    right: 20%;
+    top: 6%;
+    right: 15%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 60% !important;
+    height: 100% !important;
   }
 }
+
 

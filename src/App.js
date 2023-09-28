@@ -19,15 +19,17 @@ function App() {
   }, [])
 
   return (
+<React.Fragment>
 
-    <div className="App">
+    <div className="App" style={{display:"flex"}}>
       {welcomeAnimationLoaded ? 
         <React.Fragment>
           {/* <div className="my-div"> */}
+
           <CustomComponent/>
-          
-          {/* </div> */}
           <ProgrammerModel/>
+
+          {/* </div> */}
           
         </React.Fragment>
       
@@ -47,6 +49,7 @@ function App() {
           
       
     </div>
+    </React.Fragment>
   );
 }
 

@@ -342,3 +342,79 @@ body {
       0 0 160px #03bcf4;
   }
 }
+
+
+@media (min-width: 110px) and  (max-width: 577px) {
+
+  .main-container{
+    scale: .4;
+    font-size: 1.5em;
+    top: -15%;
+    right: -50%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+@media (min-width: 577px) and  (max-width: 700px) {
+
+  .main-container{
+    scale: .4;
+    font-size: 1.5em;
+    top: -15%;
+    right: -35%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+@media (min-width: 700px) and  (max-width: 1200px) {
+
+  .main-container{
+    scale: .6;
+    font-size: 1.5em;
+    top: 0%;
+    right: 0%;
+    z-index: 1;
+  }
+  .sceneComponent{
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+
+  .main-container{
+    scale: .5;
+    font-size: 1.5em;
+    top: -30%;
+    right: -10% ;
+    z-index: 1;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1600px) {
+
+  .main-container{
+    scale: 0.8;
+    font-size: 1.5em;
+    top: 6%;
+    right: -5%;
+    z-index: 1;
+  }
+}
+@media (min-width: 1600px){
+  .main-container{
+    scale: 1;
+    font-size: 1em;
+    top: 7%;
+    right: 20%;
+    z-index: 1;
+  }
+}
+
